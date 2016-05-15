@@ -1,0 +1,15 @@
+Django==1.9.6
+django-keyerror==2.1.3
+celery==3.1.20
+django-storages==1.1.8
+boto==2.39.0
+django-yadt==2.0.5
+python-memcached==1.57
+django-celery==3.1.17
+django-enumfield==1.3b2
+psycopg2==2.6.1
+django-staticfiles-dotd==1.2.1
+https://github.com/lamby/django-setuptest/zipball/django-1.9-support#egg=django-setuptest
+gunicorn==19.4.5
+redis==2.10.5
+reportlab==3.3.0

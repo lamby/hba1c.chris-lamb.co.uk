@@ -1,0 +1,18 @@
+{% extends "base/base.html" %}
+
+{% block container %}
+
+<div class="jumbotron">
+  <h1>HBA1C report generator</h1>
+  <p>
+    This site &hellip;
+  </p>
+  <p>
+    <a
+      href="{% url "reports:create" %}"
+      class="btn btn-primary btn-lg"
+    >Start</a>
+  </p>
+</div>
+
+{% endblock %}

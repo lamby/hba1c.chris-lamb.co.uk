@@ -1,0 +1,38 @@
+{% extends "base/base.html" %}
+
+{% block header %}{% endblock %}
+{% block footer %}{% endblock %}
+
+{% block body_classes %}{{ block.super }} f_preview{% endblock %}
+
+{% block container %}
+
+<div class="page-title text-center animated fadeInLeft">
+  <h2>Now preview your report</h2>
+</div>
+
+<br>
+
+{% include "reports/preview/include_form.html" %}
+
+<div class="row">
+  {% for image in session.preview_images.all %}
+  <div class="col-xs-12 text-center">
+    {% if session.preview_images.count > 1 %}
+    <p class="muted">Page {{ forloop.counter }}/{{ session.preview_images.count }}</p>
+    <br>
+    {% endif %}
+
+    <a href="{{ image.image.url }}">
+      <img class="img-responsive preview" src="{{ image.image.original.url }}">
+    </a>
+
+    <br>
+    <br>
+  </div>
+  {% endfor %}
+</div>
+
+{% include "reports/preview/include_form.html" %}
+
+{% endblock %}

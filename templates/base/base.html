@@ -1,0 +1,59 @@
+{% extends "base/generic_base.html" %}
+
+{% block body_classes %}{{ block.super }} f_base{% endblock %}
+
+{% block content %}
+
+  {% block header %}
+  <header>
+    <nav class="navbar navbar-default navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="{% url "static:landing" %}">
+            HBA1C report generator
+          </a>
+        </div>
+      </div>
+    </nav>
+  </header>
+  {% endblock %}
+
+  {% block body %}
+
+  {% if messages %}
+  <div class="container alerts">
+    {% for message in messages %}
+    <div class="alert alert-{% if message.tags == "error" %}danger{% else %}{{ message.tags }}{% endif %}">
+      {{ message }}
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  <div class="container">
+    {% block container %}{% endblock %}
+  </div>
+  {% endblock %}
+
+  {% block footer %}
+  <footer>
+    <div class="container text-center">
+      <p>
+        &copy; 2016—{% now "Y" %} Chris Lamb. All rights reserved.
+      </p>
+
+      <p class="text-muted">
+        <a href="{% url "static:terms" %}">Terms of service</a> &bull;
+        <a href="{% url "static:privacy" %}">Privacy policy</a> &bull;
+      </p>
+    </div>
+  </footer>
+  {% endblock %}
+
+{% endblock %}

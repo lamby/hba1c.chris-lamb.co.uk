@@ -1,0 +1,17 @@
+[Unit]
+Description=hba1c-gunicorn
+After=network.target
+
+[Install]
+WantedBy=multi-user.target
+
+[Service]
+User=www-data
+Group=www-data
+Restart=always
+
+ExecStart=/usr/share/python/hba1c/bin/gunicorn --workers=2 --max-requests=500 --log-level=info --preload hba1c.wsgi
+ExecReload=/bin/kill -s HUP $MAINPID
+ExecStop=/bin/kill -s TERM $MAINPID
+
+PrivateTmp=true

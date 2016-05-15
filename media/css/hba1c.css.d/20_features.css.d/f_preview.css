@@ -1,0 +1,5 @@
+.f_preview img.preview {
+  margin: 0 auto;
+  border: 3px solid black;
+  background-color: white;
+}

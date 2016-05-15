@@ -1,0 +1,13 @@
+.f_base header {
+  height: auto !important;
+  background: #222;
+}
+
+.f_base footer {
+  margin-top: 48px;
+}
+
+.f_base footer .container {
+  padding-top: 24px;
+  padding-bottom: 24px;
+}

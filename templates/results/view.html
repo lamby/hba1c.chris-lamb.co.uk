@@ -1,0 +1,140 @@
+{% extends "base/base.html" %}
+
+{% block body_classes %}{{ block.super }} f_results{% endblock %}
+
+{% block container %}
+
+<div class="text-center">
+  <h2>Enter results</h2>
+</div>
+
+{% if form.non_field_errors %}
+<div class="has-error">
+  {% for x in form.non_field_errors %}
+  <p class="help-block">{{ x }}</p>
+  {% endfor %}
+</div>
+{% endif %}
+
+<br>
+
+<form method="POST" action="" class="form-horizontal">
+  {% csrf_token %}
+
+  <div class="form-group {% if form.errors.date %}has-error{% endif %}">
+    <label
+      for="{{ form.date.id_for_label }}"
+      class="control-label col-sm-2"
+    >
+      Date
+    </label>
+    <div class="col-sm-10">
+      <input
+        id="{{ form.date.id_for_label }}"
+        type="date"
+        class="form-control input-lg"
+        name="{{ form.date.html_name }}"
+        value="{{ form.date.value|default:"" }}"
+      >
+      {% for x in form.errors.date %}
+        <p class="help-block">{{ x }}</p>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="form-group {% if form.errors.value %}has-error{% endif %}">
+    <label
+      for="{{ form.name.id_for_label }}"
+      class="control-label col-sm-3 col-md-2"
+    >
+      Value
+    </label>
+    <div class="col-sm-9 col-md-10">
+      <input
+        type="number"
+        id="{{ form.value.id_for_label }}"
+        name="{{ form.value.html_name }}"
+        value="{{ form.value.value|default:"" }}"
+        class="form-control input-lg"
+        placeholder="eg. 56"
+      >
+      {% for x in form.errors.value %}
+        <p class="help-block">{{ x }}</p>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-8 col-xs-offset-2">
+      <button
+        type="submit"
+        value="add"
+        class="btn btn-default btn-lg"
+      >
+        <span class="glyphicon glyphicon-plus"></span>
+        Add result
+      </a>
+    </div>
+  </div>
+  </p>
+
+  <br>
+  <br>
+</form>
+
+{% if session.results.exists %}
+
+<div class="panel panel-default">
+  <div class="panel-heading">Results</div>
+
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for instance in session.results.all %}
+      <tr>
+        <td>
+          {{ instance.date }}
+        </td>
+        <td>
+          {{ instance.value }}
+        </td>
+        <td>
+          <form
+            method="POST"
+            action="{% url "results:delete" instance.pk %}"
+          >
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger btn-sm">
+              <span class="glyphicon glyphicon-remove"></span>
+              Delete
+            </button>
+          </form>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<br>
+<br>
+
+<form method="POST" action="{% url "results:done" %}">
+  {% csrf_token %}
+
+  <button
+    type="submit"
+    class="btn btn-primary btn-lg btn-block"
+  >
+    Preview report
+    <span class="glyphicon glyphicon-chevron-right"></span>
+  </button>
+</p>
+
+{% endif %}
+
+{% endblock %}

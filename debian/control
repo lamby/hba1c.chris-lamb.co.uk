@@ -1,0 +1,31 @@
+Source: hba1c
+Section: python
+Priority: extra
+Maintainer: Chris Lamb <lamby@debian.org>
+Build-Depends:
+ debhelper (>= 9),
+ dh-systemd (>= 1.5),
+ dh-virtualenv (>= 0.10),
+ libffi-dev,
+ libjpeg-dev,
+ libpq-dev,
+ libpython-dev,
+ python,
+ python-reportlab,
+ python-lxml
+Standards-Version: 3.9.6
+
+Package: hba1c
+Architecture: any
+Pre-Depends:
+ ghostscript,
+ imagemagick,
+ python-lxml,
+ python-reportlab,
+ python2.7,
+ ${misc:Pre-Depends}
+Depends:
+ ${misc:Depends},
+ ${shlibs:Depends}
+Description: hba1c
+ hba1c

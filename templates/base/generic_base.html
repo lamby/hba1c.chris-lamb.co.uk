@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>{% block title %}HBA1C{% endblock %}</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  {% block css %}
+    <link href="{% static "css/hba1c.css" %}" rel="stylesheet">
+    {% font "Open+Sans:400italic,600italic,400,600" %}
+    {% font "Open+Sans+Condensed:300,700" %}
+  {% endblock %}
+
+    {% block extrahead %}{% endblock %}
+  </head>
+
+  <body class="{% block body_classes %}f_generic_base f_feedback f_form_submit{% endblock %}">
+    {% block content %}{% endblock %}
+
+    <div class="loading modal-backdrop" style="display: none;">
+      <img src="{% static "images/f_generic_base/loading.gif" %}" alt="">
+    </div>
+
+    {% block script %}
+    <script type="text/javascript" src="{% static "js/hba1c.js" %}"></script>
+    {% endblock %}
+  </body>
+</html>

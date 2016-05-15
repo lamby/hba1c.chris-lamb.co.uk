@@ -1,0 +1,15 @@
+<form method="POST" action="" class="text-center">
+  {% csrf_token %}
+    <a class="btn btn-default btn-lg" href="{% url "results:view" %}">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+      Make changes
+    </a>
+    <button type="submit" class="btn btn-primary btn-lg">
+      Download
+      <span class="glyphicon glyphicon-download"></span>
+    </button>
+</form>
+
+<br>
+<br>
+<br>

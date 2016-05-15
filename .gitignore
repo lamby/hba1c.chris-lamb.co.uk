@@ -1,0 +1,7 @@
+*.pyc
+/hba1c/settings/custom.py
+/storage/
+/static/
+/pep8.txt
+/coverage.xml
+/.coverage

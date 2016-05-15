@@ -1,0 +1,15 @@
+.f_generic_base .loading {
+  opacity: 0.7;
+}
+
+.f_generic_base .loading img {
+    top: 50%;
+    left: 50%;
+    width: 48px;
+    height: 48px;
+    z-index: 99999;
+    position: fixed;
+    overflow: auto;
+    margin-left: -24px;
+    margin-top: -24px;
+}

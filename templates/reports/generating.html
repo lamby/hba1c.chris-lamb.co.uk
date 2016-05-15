@@ -1,0 +1,24 @@
+{% extends "base/base.html" %}
+
+{% block header %}{% endblock %}
+{% block footer %}{% endblock %}
+
+{% block title %}Please wait&hellip;{% endblock %}
+
+{% block body_classes %}{{ block.super }} f_generating{% endblock %}
+
+{% block extrahead %}
+{{ block.super }}
+<noscript>
+  <meta http-equiv="refresh" content="3">
+</noscript>
+{% endblock %}
+
+{% block container %}
+
+<div class="page-title text-center">
+  <h2>Please wait&hellip;</h2>
+  <h3>We are generating a preview of your letter.</h3>
+</div>
+
+{% endblock %}
